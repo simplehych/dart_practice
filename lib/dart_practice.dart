@@ -2,6 +2,36 @@ import 'package:flutter/material.dart';
 
 void main() {
   print('dart practice start');
+  printName(name: "xiaoming", age: 14);
+  sayWord("Bob", "Howdy", "smoke signal","like");
+
+  List<int> list = [1, 2, 3, 4, 5];
+//  list.replaceRange(1,4,[7,8,9]);
+//  list.removeWhere((item){
+//    return item ==3;
+//  });
+//  list.forEach((name){
+//
+//  });
+//  list.shuffle();
+  Map<String, int> map = new Map.fromIterable(list,
+      key: (item) => item.toString(), value: (item) => item * item);
+  Map<String, int> scores = {'Bob': 36};
+  for (var key in ['Bob', 'Rohan', 'Sophena']) {
+    // 查找指定键，如果不存在就添加
+    scores.putIfAbsent(key, () => key.length);
+  }
+  print(scores.toString());
+
+  List fixedLengthList = new List<int>.filled(3, 0);
+  List fixedLengthList1 = new List.from([1, 3, 2]);
+  List fixedLengthList2 = new List<int>.generate(4, (int index) {
+    return index * index;
+  });
+  print(fixedLengthList1);
+  print(fixedLengthList1.toSet());
+  print(fixedLengthList1.toList());
+  print(fixedLengthList1.join(","));
 
   RegExp exp1 = new RegExp(r"(\w+)");
   // 返回正则表达式匹配项的可迭代对象
@@ -37,7 +67,6 @@ void main() {
   xiaomingsaid.write("And all the men and women...");
   print(xiaomingsaid);
 
-
   String str3 = 'Dartisans';
 
   print(str3.lastIndexOf(new RegExp(r'a(r|n)')));
@@ -49,18 +78,15 @@ void main() {
   String str4 = "resume";
   print(str4.replaceAll(new RegExp(r'e'), 'é'));
 
-
   String str2 = "86";
-  print(str2.padLeft(4, '1234'));//1234123486
-  print(str2.padRight(4, '1234'));//8612341234
-
+  print(str2.padLeft(4, '1234')); //1234123486
+  print(str2.padRight(4, '1234')); //8612341234
 
   String str1 = 'Dart strings';
   print(str1.contains('D'));
   print(str1.contains(new RegExp(r'[A-Z]')));
   print(str1.contains('D', 1));
   print(str1.contains(new RegExp(r'[A-Z]'), 0));
-
 
   String sub = "Dart is fun";
   print(sub.toLowerCase());
@@ -115,4 +141,19 @@ void main() {
   print(figureD.gcd(18)); //6 最大公约数
   print(figureD.remainder(18)); //12 截取余数
   print(figureD.toStringAsExponential(3)); //1.200e+1 几次幂值的字符串
+}
+
+void printName({String name, int age, String sex: "female"}) {
+  print("My name is $name, $age years old, gender $sex.");
+}
+
+void sayWord(String from, String msg, [String device, String mood]) {
+  String result = "$from say $msg";
+  if (device != null) {
+    result = "$result with a $device.";
+  }
+  if (mood != null) {
+    result = "$result (int a $mood mood)";
+  }
+  print(result);
 }
